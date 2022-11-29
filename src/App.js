@@ -19,6 +19,7 @@ import EditWorkout from
     "./components/update-workout.components";
 import WorkoutList from 
     "./components/workout-list.components";
+import Calendar from "./calendar";
   
 // App Component
 const App = () => {
@@ -29,7 +30,7 @@ const App = () => {
           <Navbar bg="dark" variant="dark">
             <Container>
               <Navbar.Brand>
-                <Link to={"/create-workout"} 
+                <Link to={"/"} 
                   className="nav-link">
                   Williams Workout App Phase 1
                 </Link>
@@ -50,10 +51,14 @@ const App = () => {
                   </Link>
                 </Nav>
               </Nav>
+
+        
             </Container>
-          </Navbar>
+          </Navbar>      
+          
+       
         </header>
-  
+
         <Container>
           <Row>
             <Col md={12}>
@@ -61,8 +66,8 @@ const App = () => {
         
                 <Routes>
                   <Route exact path="/" 
-                    element ={<CreateWorkout/>} />
-                  <Route path="/create-Workout" 
+                    element ={<Calendar/>} />
+                  <Route path="/create-workout" 
                      element ={<CreateWorkout/>} />
                   <Route path="/edit-workout/:id" 
                      element ={<EditWorkout/>}/>
@@ -71,9 +76,11 @@ const App = () => {
                 </Routes>
               </div>
             </Col>
-          </Row>
-        </Container>
+          </Row> 
 
+        </Container>
+       
+       
       </div>
     </Router>
   );

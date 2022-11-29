@@ -25,7 +25,7 @@ const WorkoutList = () => {
   
   return (
     <div className="table-wrapper">
-      <Table striped bordered hover>
+      <Table striped bordered hover variant="dark">
         <thead>
           <tr>
             <th>Name</th>
