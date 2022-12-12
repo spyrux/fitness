@@ -4,36 +4,29 @@
 // Import Modules
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import WorkoutForm from "./WorkoutForm";
-import { useParams, useNavigate } from "react-router-dom";
+import DayForm from "./DayForm";
   
 // EditStudent Component
-const EditWorkout = () => {
-
-  
-  let { id } = useParams();  
-  const history = useNavigate();
-  
+const EditDay = (props) => {
   const [formValues, setFormValues] = useState({
     name: "",
     email: "",
     reps: "",
     weight:""
   });
-
-
+    
   //onSubmit handler
-  const onSubmit = (workoutObject) => {
+  const onSubmit = (dayObject) => {
     axios
       .put(
         "http://localhost:4000/workouts/update-workout/" +
-          id,
-        workoutObject
+          props.match.params.id,
+        dayObject
       )
       .then((res) => {
         if (res.status === 200) {
           alert("Workout successfully updated");
-          history("/workout-list");
+          props.history.push("/workout-list");
         } else Promise.reject();
       })
       .catch((err) => alert("Something went wrong"));
@@ -43,8 +36,8 @@ const EditWorkout = () => {
   useEffect(() => {
     axios
       .get(
-        "http://localhost:4000/workouts/update-workout/" 
-        + id
+        "http://localhost:4000/days/" 
+        + props.match.params.id
       )
       .then((res) => {
         const { name, sets, reps, weight } = res.data;
@@ -66,4 +59,4 @@ const EditWorkout = () => {
 };
   
 // Export EditStudent Component
-export default EditWorkout;
+export default EditDay;
