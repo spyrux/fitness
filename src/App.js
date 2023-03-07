@@ -43,6 +43,19 @@ const App = () => {
                     Create Workout
                   </Link>
                 </Nav>
+
+                <Nav>
+                  <Link to={"/create-day"} 
+                    className="nav-link">
+                    Create Workout
+                  </Link>
+                </Nav>
+                <Nav>
+                  <Link to={"/day-list"} 
+                    className="nav-link">
+                    Day List
+                  </Link>
+                </Nav>
   
                 <Nav>
                   <Link to={"/workout-list"} 
@@ -73,6 +86,12 @@ const App = () => {
                      element ={<EditWorkout/>}/>
                   <Route path="/workout-list" 
                      element ={<WorkoutList/>} />
+                  {/* <Route path="/create-day" 
+                     element ={<CreateDay/>} />
+                  <Route path="/day-list" 
+                     element ={<DayList/>} /> */}
+                    
+                  
                 </Routes>
               </div>
             </Col>

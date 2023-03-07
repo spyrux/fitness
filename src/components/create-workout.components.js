@@ -6,7 +6,7 @@ import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import WorkoutForm from "./WorkoutForm";
   
-// CreateStudent Component
+// CreateWorkout Component
 const CreateWorkout = () => {
   const [formValues, setFormValues] = 
     useState({ name: '', sets: '', reps: '' , weight:''})

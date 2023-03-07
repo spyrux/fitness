@@ -1,27 +1,28 @@
-
+require("dotenv").config({ path: "./config.env" });
 let express = require('express');
 let mongoose = require('mongoose');
 let cors = require('cors');
 let bodyParser = require('body-parser');
-let dbConfig = require('./database/db');
-  
-// Express Route
-const workoutRoute = require('../backend/routes/workout.route')
-  
-// Configure mongoDB Database
+
+const Db = process.env.ATLAS_URI;
 
 
-  
-// Connecting MongoDB Database
+
+
 mongoose.Promise = global.Promise;
-mongoose.connect(dbConfig.db).then(() => {
+mongoose.connect(Db).then(() => {
   console.log('Database successfully connected!')
 },
   error => {
     console.log('Could not connect to database : ' + error)
   }
 )
-  
+
+// Express Route
+const workoutRoute = require('../backend/routes/workout.route')
+const dayRoute = require('../backend/routes/day.route')
+
+
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -29,14 +30,19 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(cors());
 app.use('/workouts', workoutRoute)
+app.use('/days', dayRoute)
   
   
 // PORT
+// Connecting MongoDB Database
 const port = process.env.PORT || 4000;
 const server = app.listen(port, () => {
   console.log('Connected to port ' + port)
 })
-  
+
+
+
+
 // 404 Error
 app.use((req, res, next) => {
   res.status(404).send('Error 404!')

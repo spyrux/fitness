@@ -1,6 +1,4 @@
 
-// EditStudent Component for update student data
-  
 // Import Modules
 import React, { useState, useEffect } from "react";
 import axios from "axios";

@@ -46,15 +46,15 @@ const EditDay = (props) => {
       .catch((err) => console.log(err));
   }, []);
   
-  // Return student form
+  
   return (
-    <WorkoutForm
+    <DayForm
       initialValues={formValues}
       onSubmit={onSubmit}
       enableReinitialize
     >
       Update Workout
-    </WorkoutForm>
+    </DayForm>
   );
 };
   
